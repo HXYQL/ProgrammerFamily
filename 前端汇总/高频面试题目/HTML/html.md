@@ -20,3 +20,30 @@
     有利于开发和维护，语义化更具可读性，代码更好维护，与CSS3关系更和谐。
 ```
 
+#### 常见的Meta标签属性
+
+```html
+1、name属性
+2、content属性
+	name属性主要用于描述网页，与之对应的属性值为content，content中的内容主要是便于搜索引擎机器人查找信息和分类信息用的。
+3、http-equiv属性：类似http的文件头作用，它可以向浏览器设置一些有用的信息，以帮助正确和精确地显示网页内容
+4、charset属性：声明当前文档的字符编码
+```
+
+#### HTML5和CSS3新特性：(这些新特性一般都有兼容性问题，IE+9以上支持)
+
+```html
+HTML5:header(头部标签)、nav(导航标签)、article(内容标签)、footer(尾部标签)、section(定义文档某个区域)、aside(侧边栏标签)、audio(音频标签)、video(视频标签)，视频支持MP4，webm,ogg格式；音频支持MP3，wav,ogg格式；
+新增input标签类型type的值：data,tel,email,number,week,day,url,search,color,time;
+新增表单input属性：required(必填),placeholder,提示文本，autofocus自动聚焦，mutiple多选文件提交
+CSS3:新增选择器(伪类选择器、伪元素选择器、属性选择器)和一些盒子模型以及其他特性。
+类选择器、伪类选择器(例如first-child)、属性选择器，权重为10；
+伪元素选择器(::before,::after)
+伪元素选择器与标签选择器一样权重为1；创建的元素属于行内元素，此元素在文档树中是找不到的。
+before创建的伪元素，是放在父元素内容的前面，after是放在父元素内容的后面。不是上面和下面；
+盒子模型的属性：box-sizing;
+filter属性，让图片变模糊；
+width:calc(100%-80px)，可以进行一些数值的计算。
+过渡属性transition:属性 时间  运动曲线；
+```
+
