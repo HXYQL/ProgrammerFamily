@@ -42,7 +42,7 @@ index：文件保存暂存区信息；
 
 #### 常用Linux命令
 
-```powershell
+```shell
 clear——清除屏幕
 echo——往控制台打印信息的，相当于console.log()
 echo 'demo'>text.txt——将'demo'内容存放在新建的文件text.txt中
@@ -64,7 +64,7 @@ pwd 显示当前目录的路径
 
 #### 文件的状态
 
-```
+```shell
 1. Untracked:未跟踪，此文件在文件夹中，但还没有提交到git库，通过git add状态变为Staged；
 2. Staged:暂存状态，执行commit将修改同步到库中；
 3. Unmodify:文件已经入库，未修改；
@@ -102,13 +102,13 @@ pwd 显示当前目录的路径
 
 ###### 查看安装的git版本
 
-```powershell
+```shell
 git --version
 ```
 
 ###### 创建本地仓库
 
-```powershell
+```shell
 第一种方法：创建全新的本地仓库
     git init					//初始化仓库
 第二种方法：克隆远程仓库
@@ -127,7 +127,7 @@ git --version
 
 ###### 其他Git高层命令
 
-```powershell
+```shell
 git status
 确定文件当前处于什么状态
 git diff
@@ -156,7 +156,7 @@ get commit -m "注释内容"    //将暂存区内容提交到本地仓库
 
 ###### Git分支操作
 
-```powershell
+```shell
 分支就相当于将原来的项目复制了一份，本质是一个提交对象。
 git branch 分支名
 创建分支
@@ -180,13 +180,13 @@ git branch 分支名 哈希值
 
 ###### 查看暂存区（底层命令）
 
-```powershell
+```shell
 git ls-files -s
 ```
 
 ###### Git存储
 
-```powershell
+```shell
 git stash list
 查看当前存储
 git stash
@@ -197,11 +197,14 @@ git stash drop 储藏的名字
 删除栈中储藏的文件，也是默认取出栈顶的文件
 git stash pop
 应用栈中的储藏文件并将其删除，上面两个命令的结合，有多个储藏文件时使用上述两个命令
+
+
+使用场景：假如在工作过程中，不小心在master上面修改代码了，这时候可以先使用 git stash内容将修改的部分作为缓存，然后切换到另外一个分支，使用 git stash pop将缓存的内容应用到当前分支上。 
 ```
 
 ###### Git撤销
 
-```powershell
+```shell
 git checkout -- 文件
 重置工作目录中文件的修改
 git reset HEAD 文件名
@@ -212,7 +215,7 @@ git commit --amend
 
 ###### 打标签
 
-```powershell
+```shell
 git tag
 列出所有的tag标签
 git tag 标签
@@ -229,32 +232,32 @@ git checkout -b 标签名
 
 ###### 将本地项目推送到远程仓库
 
-```powershell
+```shell
 git push 仓库别名 分支名，此时生成了远程分支
 ```
 
 ###### 将远程仓库的项目下载（克隆）到本地的步骤
 
-```powershell
+```shell
 1、新建一个本地文件夹
 2、在文件夹中打开git bash页面，使用命令 git clone url地址
 ```
 
 ###### 查看当前的远程仓库
 
-```powershell
+```shell
 git remote -v
 ```
 
 ###### 给本地仓库起别名
 
-```powershell
+```shell
 git remote add 别名 仓库地址（https）
 ```
 
 ###### 全局配置
 
-```powershell
+```shell
 查看系统config配置
 git config --system --list
 查看当前用户配置
@@ -266,7 +269,7 @@ git config --global user.email text@runoob.com
 
 ###### 更新修改远程仓库
 
-```powershell
+```shell
 git fetch 别名（将修改同步到远程跟踪分支上）
 git merge 远程跟踪分支
 将远程跟踪分支合并到master上
@@ -276,12 +279,12 @@ git merge 远程跟踪分支
 
 1. 确保本地分支已经跟踪了远程跟踪分支
 
-   ```powershell
+   ```shell
    git branch -u 远程分支名
    本地分支跟踪远程分支
    ```
 
-2. ```powershell
+2. ```shell
    将分支推送到远程仓库中
    git push 仓库别名 分支名
    从远程仓库拉取代码
@@ -294,21 +297,21 @@ git merge 远程跟踪分支
 
    2. 已经有一个创建好的本地分支时
 
-      ```powershell
+      ```shell
       git branch -u 远程分支名
       本地分支跟踪远程分支
       ```
 
    3. 新建一个分支时，并且跟踪其他远程分支
 
-      ```powershell
+      ```shell
       git checkout -b 本地分支名 远程跟踪分支名
       或git checkout --track 远程跟踪分支名
       ```
 
 ###### 冲突合并
 
-```powershell
+```shell
 合并分支时，两个分支在同一个文件的同一个位置有两套完全不同的修改。
 
 首先使用git merge进行合并发现不会成功；
@@ -317,11 +320,23 @@ git merge 远程跟踪分支
 
 ###### 版本穿梭
 
-```powershell
+```shell
 git remote -v
 查看之前提交的版本号
 git reset --hard 版本号
 回退到指定版本
 注意：在进行版本穿梭操作的时候，最好新建一个分支，因为回退到远程仓库的主分支之前的分支，再push到远程仓库会出现错误
+```
+
+###### git pull与git fetch
+
+```shell
+使用场景：远程仓库中的内容是最新的，而本地仓库中还没有得到及时更新。
+
+git pull 远程仓库名 分支名
+从远程仓库中获得最新的版本并且与本地分支进行合并，相当于 git fetch + git merge
+
+git fetch 远程仓库名 分支名
+从远程仓库中获得分支，但仅仅是将代码拉下来，还需要手动将拉下来的代码与指定分支合并
 ```
 
